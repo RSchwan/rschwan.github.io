@@ -1,0 +1,237 @@
+groups:
+  - name: Preprints
+    items:
+      - title: GPU-Accelerated Cholesky Factorization of Block Tridiagonal Matrices
+        titleUrl: https://arxiv.org/abs/2601.03754
+        authors:
+          - name: R. Schwan
+            me: true
+          - name: D. Kuhn
+          - name: C. N. Jones
+        venueText: Preprint, 2026
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2601.03754
+          - label: Code
+            icon: code
+            url: https://github.com/PREDICT-EPFL/socu
+
+      - title: Parallel KKT Solver in PIQP for Multistage Optimization
+        titleUrl: https://arxiv.org/abs/2511.00946
+        authors:
+          - name: F. Song
+          - name: R. Schwan
+            me: true
+          - name: Y. Chen
+          - name: C. N. Jones
+        venueText: Preprint, 2025
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2511.00946
+          - label: Code
+            icon: code
+            url: https://github.com/PREDICT-EPFL/piqp
+
+  - name: Journal Papers
+    items:
+      - title: Distributed Real-Time Cooperative Model Predictive Control
+        titleUrl: https://doi.org/10.1109/TAC.2026.3685575
+        authors:
+          - name: Y. Jiang
+          - name: K. Fedorová
+          - name: R. Schwan
+            me: true
+          - name: J. Oravec
+          - name: C. N. Jones
+        venue:
+          name: IEEE Transactions on Automatic Control
+          details: "2026"
+        links:
+          - label: Paper
+            icon: paper
+            url: https://www.researchgate.net/profile/Yuning-Jiang-3/publication/404018923_Distributed_Real-Time_Cooperative_Model_Predictive_Control/links/69e8d3a845713a29cada25c1/Distributed-Real-Time-Cooperative-Model-Predictive-Control.pdf
+
+      - title: On continuation and convex Lyapunov functions
+        titleUrl: https://doi.org/10.1109/TAC.2024.3381913
+        authors:
+          - name: W. Jongeneel
+          - name: R. Schwan
+            me: true
+        venue:
+          name: IEEE Transactions on Automatic Control
+          details: vol. 69, no. 10, pp. 6895-6906, 2024
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2301.05932
+
+      - title: Stability Verification of Neural Network Controllers Using Mixed-Integer Programming
+        titleUrl: https://doi.org/10.1109/TAC.2023.3283213
+        authors:
+          - name: R. Schwan
+            me: true
+          - name: C. N. Jones
+          - name: D. Kuhn
+        venue:
+          name: IEEE Transactions on Automatic Control
+          details: vol. 68, no. 12, pp. 7514-7529, 2023
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2206.13374
+          - label: Code
+            icon: code
+            url: https://github.com/PREDICT-EPFL/evanqp
+
+  - name: Conference Papers
+    items:
+      - title: "LaOPT: A Native C++ Optimal Control Toolbox for High-Performance Implementations, and Application to Racing"
+        authors:
+          - name: J. Waibel
+            equalContribution: true
+          - name: R. Schwan
+            me: true
+            equalContribution: true
+          - name: C. N. Jones
+        venue:
+          name: IEEE Conference on Control Technology and Applications (CCTA)
+          details: "2026"
+
+      - title: Exploiting Multistage Optimization Structure in Proximal Solvers
+        titleUrl: https://doi.org/10.1109/cdc57313.2025.11313030
+        authors:
+          - name: R. Schwan
+            me: true
+          - name: D. Kuhn
+          - name: C. N. Jones
+        venue:
+          name: IEEE Conference on Decision and Control (CDC)
+          details: 2025, pp. 4677-4683
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2503.12664
+          - label: Code
+            icon: code
+            url: https://github.com/PREDICT-EPFL/piqp
+
+      - title: "Cooperative Distributed Model Predictive Control for Embedded Systems: Experiments with Hovercraft Formations"
+        titleUrl: https://doi.org/10.1109/ICRA55743.2025.11128032
+        authors:
+          - name: G. Stomberg
+            equalContribution: true
+          - name: R. Schwan
+            me: true
+            equalContribution: true
+          - name: A. Grillo
+          - name: C. N. Jones
+          - name: T. Faulwasser
+        venue:
+          name: International Conference on Robotics and Automation (ICRA)
+          details: 2025, pp. 11377-11383
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2409.13334
+
+      - title: On identifying the non-linear dynamics of a hovercraft using an end-to-end deep learning approach
+        titleUrl: https://doi.org/10.1016/j.ifacol.2024.08.543
+        authors:
+          - name: R. Schwan
+            me: true
+          - name: N. Schmid
+          - name: E. Chassaing
+          - name: K. Samaha
+          - name: C. Jones
+        venue:
+          name: IFAC Symposium on System Identification
+          details: vol. 58, 2024, pp. 289-294
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2405.09405
+
+      - title: "PIQP: A Proximal Interior-Point Quadratic Programming Solver"
+        titleUrl: https://doi.org/10.1109/CDC49753.2023.10383915
+        authors:
+          - name: R. Schwan
+            me: true
+          - name: Y. Jiang
+          - name: D. Kuhn
+          - name: C. N. Jones
+        venue:
+          name: IEEE Conference on Decision and Control (CDC)
+          details: 2023, pp. 1088-1093
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2304.00290
+          - label: Code
+            icon: code
+            url: https://github.com/PREDICT-EPFL/piqp
+
+      - title: Physics-Informed Machine Learning for Modeling and Control of Dynamical Systems
+        titleUrl: https://doi.org/10.23919/ACC55779.2023.10155901
+        authors:
+          - name: T. X. Nghiem
+          - name: J. Drgona
+          - name: C. N. Jones
+          - name: Z. Nagy
+          - name: R. Schwan
+            me: true
+          - name: B. Dey
+          - name: A. Chakrabarty
+          - name: S. Di Cairano
+          - name: J. A. Paulson
+          - name: A. Carron
+          - name: M. N. Zeilinger
+          - name: W. Shaw Cortez
+          - name: D. L. Vrabie
+        venue:
+          name: American Control Conference (ACC)
+          details: 2023, pp. 3735-3750
+        links:
+          - label: Paper
+            icon: paper
+            url: https://arxiv.org/pdf/2306.13867
+
+      - title: Optimal Thrust Vector Control of an Electric Small-Scale Rocket Prototype
+        titleUrl: https://doi.org/10.1109/ICRA46639.2022.9811938
+        authors:
+          - name: R. Linsen
+          - name: P. Listov
+          - name: A. de Laiarte
+          - name: R. Schwan
+            me: true
+          - name: C. N. Jones
+        venue:
+          name: International Conference on Robotics and Automation (ICRA)
+          details: 2022, pp. 1996-2002
+        links:
+          - label: Paper
+            icon: paper
+            url: https://infoscience.epfl.ch/server/api/core/bitstreams/ad287a78-7931-46c9-8028-1e541a1e3a40/content
+
+  - name: Dissertations
+    items:
+      - title: "Numerical Methods for Optimization and Control: From Verification to GPU-Acceleration"
+        titleUrl: https://infoscience.epfl.ch/entities/publication/16878a1c-d1a7-4f63-984d-a487d412f3ef
+        authors:
+          - name: R. Schwan
+            me: true
+        venueText: PhD thesis, EPFL, 2026
+        links:
+          - label: Paper
+            icon: paper
+            url: https://infoscience.epfl.ch/server/api/core/bitstreams/614b0979-4a56-4967-9515-bf1462e09e49/content
+
+      - title: Data-Driven Economic Model Predictive Control
+        authors:
+          - name: R. Schwan
+            me: true
+        venueText: MSc thesis, Imperial College London, 2020
+
+notes:
+  - "*Equal contribution"

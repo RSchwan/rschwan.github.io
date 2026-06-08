@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Roland Schwan's personal website"
+    />
+    <title>Roland Schwan</title>
+    <link rel="stylesheet" href="./assets/site.css" />
+  </head>
+  <body>
+    <main class="mx-auto min-h-screen max-w-4xl px-6 py-10 sm:px-8 sm:py-14">
+      <header class="border-b border-slate-200 pb-10">
+        <nav
+          class="mb-10 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted"
+          aria-label="Primary navigation"
+        >
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#software">Software</a>
+          <a href="#publications">Publications</a>
+          <a href="#teaching">Teaching</a>
+        </nav>
+
+        <div class="grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start">
+          <img
+            class="aspect-square w-50 rounded-3xl object-cover sm:w-58"
+            src="./assets/profile.jpg"
+            alt="Portrait of Roland Schwan"
+          />
+
+          <div class="max-w-xl">
+            <h1 class="text-4xl font-semibold tracking-normal text-ink sm:text-5xl">
+              Roland Schwan
+            </h1>
+            <p class="mt-3 text-lg leading-8 text-slate-700">
+              Postdoctoral Researcher
+            </p>
+            <div class="mt-5 space-y-1 leading-7 text-muted">
+              <p>Dartmouth College, Computer Science</p>
+              <p>
+                <a href="mailto:roland.schwan@dartmouth.edu">roland.schwan@dartmouth.edu</a>
+              </p>
+            </div>
+
+            <div class="mt-5 flex items-center gap-4 text-muted">
+              <a href="https://scholar.google.com/citations?user=XyAfJQcAAAAJ&hl=en" aria-label="Google Scholar profile" title="Google Scholar" target="_blank">
+                <svg class="h-5 w-5" viewBox="0 0 512 512" aria-hidden="true" fill="currentColor">
+                  <path d="M390.9 298.5s0 .1 .1 .1c9.2 19.4 14.4 41.1 14.4 64-.1 82.5-66.9 149.4-149.4 149.4S106.7 445.1 106.7 362.7c0-22.9 5.2-44.6 14.4-64 1.7-3.6 3.6-7.2 5.6-10.7 4.4-7.6 9.4-14.7 15-21.3 27.4-32.6 68.5-53.3 114.4-53.3 33.6 0 64.6 11.1 89.6 29.9 9.1 6.9 17.4 14.7 24.8 23.5 5.6 6.6 10.6 13.8 15 21.3 2 3.4 3.8 7 5.5 10.5l-.1-.1zm26.4-18.8c-30.1-58.4-91-98.4-161.3-98.4s-131.2 40-161.3 98.4l-94.7-77 256-202.7 256 202.7-94.7 77.1 0-.1z"/>
+                </svg>
+              </a>
+              <a href="https://github.com/RSchwan" aria-label="GitHub profile" title="GitHub" target="_blank">
+                <svg class="h-5 w-5" viewBox="0 0 512 512" aria-hidden="true" fill="currentColor">
+                  <path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM252.8 8c-138.7 0-244.8 105.3-244.8 244 0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1 100-33.2 167.8-128.1 167.8-239 0-138.7-112.5-244-251.2-244zM105.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/roland-schwan/" aria-label="LinkedIn profile" title="LinkedIn" target="_blank">
+                <svg class="h-5 w-5" viewBox="0 0 448 512" aria-hidden="true" fill="currentColor">
+                  <path d="M416 32L31.9 32C14.3 32 0 46.5 0 64.3L0 447.7C0 465.5 14.3 480 31.9 480L416 480c17.6 0 32-14.5 32-32.3l0-383.4C448 46.5 433.6 32 416 32zM135.4 416l-66.4 0 0-213.8 66.5 0 0 213.8-.1 0zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77zM384.3 416l-66.4 0 0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2z"/>
+                </svg>
+              </a>
+              <a href="./cv.pdf" aria-label="Curriculum vitae" title="CV" target="_blank">
+                <span class="text-sm font-medium">CV</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section id="about" class="border-b border-slate-200 py-10">
+        <h2 class="text-2xl font-semibold tracking-normal text-ink">About</h2>
+        <div class="mt-5 space-y-5 leading-8 text-slate-700">
+          <p class="text-justify">
+            I'm a postdoctoral researcher in the <a href="https://web.cs.dartmouth.edu/" target="_blank">Department of Computer Science</a> at <a href="https://home.dartmouth.edu/" target="_blank">Dartmouth</a>, hosted by <a href="https://brianplancher.com/" target="_blank">Brian Plancher</a>. I completed my PhD studies in 2026 at the <a href="https://www.epfl.ch/labs/la/" target="_blank">Laboratoire d'Automatique</a> (<a href="https://www.epfl.ch/labs/la3/" target="_blank">Predictive Control Lab</a>) and the <a href="https://www.epfl.ch/labs/rao/" target="_blank">Risk Analytics and Optimization Chair (RAO)</a> under the supervision of Colin N. Jones and Daniel Kuhn.  was a member of and funded by <a href="https://nccr-automation.ch/" target="_blank">NCCR Automation</a>. I received the B.S. degree in electrical engineering and information technology from <a href="https://ethz.ch/en.html" target="_blank">ETH Zurich</a> in 2019, and the M.S. degree in control systems from <a href="https://www.imperial.ac.uk/" target="_blank">Imperial College London</a> in 2020. During summer 2024, I visited Paul Goulart's lab at the <a href="https://www.ox.ac.uk/" target="_blank">University of Oxford</a>.
+          </p>
+        </div>
+      </section>
+
+      <section id="research" class="border-b border-slate-200 py-10">
+        <h2 class="text-2xl font-semibold tracking-normal text-ink">Research</h2>
+        <div class="mt-5 space-y-5 leading-8 text-slate-700">
+          <p class="text-justify">
+            I am interested in high-performance numerical optimization and its applications to robotics and related fields, especially model predictive control, multistage optimization, and quadratic programming. More recently, my work has focused on exploiting problem structure for GPU-accelerated algorithms and high-quality numerical implementations. In prior work, I also worked on the verification of neural network-based controllers.
+          </p>
+        </div>
+      </section>
+
+      <section id="software" class="border-b border-slate-200 py-10">
+        <h2 class="text-2xl font-semibold tracking-normal text-ink">Software</h2>
+        <div class="mt-5 space-y-6 leading-7 text-slate-700">
+          <article>
+            <h3 class="font-semibold text-ink">
+              <a href="https://github.com/PREDICT-EPFL/piqp" target="_blank" rel="noopener">PIQP</a>
+            </h3>
+            <p class="mt-1">
+              A proximal interior-point solver for dense and sparse quadratic programs, designed for embedded and real-time applications. PIQP supports fast repeated solves, avoids dynamic memory allocations during re-solves, and provides interfaces to Python, Matlab/Octave, and R.
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/piqp" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2304.00290" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Solver paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2503.12664" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Multistage paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2511.00946" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Parallel KKT paper
+              </a>
+            </p>
+          </article>
+          <article>
+            <h3 class="font-semibold text-ink">
+              <a href="https://github.com/PREDICT-EPFL/socu" target="_blank" rel="noopener">socu</a>
+            </h3>
+            <p class="mt-1">
+              A Python toolbox for GPU-accelerated solution of structured sparse linear systems arising in model predictive control. It uses custom CUDA kernels to exploit block-tridiagonal structure in long-horizon problems.
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/socu" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2601.03754" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </article>
+          <article>
+            <h3 class="font-semibold text-ink">
+              <a href="https://github.com/PREDICT-EPFL/evanqp" target="_blank" rel="noopener">EVANQP</a>
+            </h3>
+            <p class="mt-1">
+              A verification framework for approximate neural networks and parametric quadratic programs. EVANQP compares learned policies against optimization-based controllers, searches for worst-case approximation errors, and can be used to certify stability over a given domain.
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/evanqp" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2206.13374" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="publications"
+        class="border-b border-slate-200 py-10"
+      >
+        <h2 class="text-2xl font-semibold tracking-normal text-ink">Publications</h2>
+        <!-- publications:start -->
+        <h3 class="mt-6 text-lg font-semibold tracking-normal text-ink">Preprints</h3>
+        <ol class="mt-4 space-y-7">
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://arxiv.org/abs/2601.03754" target="_blank" rel="noopener">GPU-Accelerated Cholesky Factorization of Block Tridiagonal Matrices</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>, D. Kuhn, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              Preprint, 2026
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2601.03754" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/socu" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://arxiv.org/abs/2511.00946" target="_blank" rel="noopener">Parallel KKT Solver in PIQP for Multistage Optimization</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              F. Song, <span class="font-semibold text-ink">R. Schwan</span>, Y. Chen, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              Preprint, 2025
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2511.00946" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/piqp" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+            </p>
+          </li>
+        </ol>
+
+        <h3 class="mt-10 text-lg font-semibold tracking-normal text-ink">Journal Papers</h3>
+        <ol class="mt-4 space-y-7">
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/TAC.2026.3685575" target="_blank" rel="noopener">Distributed Real-Time Cooperative Model Predictive Control</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              Y. Jiang, K. Fedorová, <span class="font-semibold text-ink">R. Schwan</span>, J. Oravec, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IEEE Transactions on Automatic Control</span>, 2026
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://www.researchgate.net/profile/Yuning-Jiang-3/publication/404018923_Distributed_Real-Time_Cooperative_Model_Predictive_Control/links/69e8d3a845713a29cada25c1/Distributed-Real-Time-Cooperative-Model-Predictive-Control.pdf" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/TAC.2024.3381913" target="_blank" rel="noopener">On continuation and convex Lyapunov functions</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              W. Jongeneel and <span class="font-semibold text-ink">R. Schwan</span>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IEEE Transactions on Automatic Control</span>, vol. 69, no. 10, pp. 6895-6906, 2024
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2301.05932" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/TAC.2023.3283213" target="_blank" rel="noopener">Stability Verification of Neural Network Controllers Using Mixed-Integer Programming</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>, C. N. Jones, and D. Kuhn
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IEEE Transactions on Automatic Control</span>, vol. 68, no. 12, pp. 7514-7529, 2023
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2206.13374" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/evanqp" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+            </p>
+          </li>
+        </ol>
+
+        <h3 class="mt-10 text-lg font-semibold tracking-normal text-ink">Conference Papers</h3>
+        <ol class="mt-4 space-y-7">
+          <li>
+            <p class="font-medium text-ink">
+              LaOPT: A Native C++ Optimal Control Toolbox for High-Performance Implementations, and Application to Racing
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              J. Waibel*, <span class="font-semibold text-ink">R. Schwan*</span>, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IEEE Conference on Control Technology and Applications (CCTA)</span>, 2026
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/cdc57313.2025.11313030" target="_blank" rel="noopener">Exploiting Multistage Optimization Structure in Proximal Solvers</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>, D. Kuhn, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IEEE Conference on Decision and Control (CDC)</span>, 2025, pp. 4677-4683
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2503.12664" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/piqp" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/ICRA55743.2025.11128032" target="_blank" rel="noopener">Cooperative Distributed Model Predictive Control for Embedded Systems: Experiments with Hovercraft Formations</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              G. Stomberg*, <span class="font-semibold text-ink">R. Schwan*</span>, A. Grillo, C. N. Jones, and T. Faulwasser
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">International Conference on Robotics and Automation (ICRA)</span>, 2025, pp. 11377-11383
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2409.13334" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1016/j.ifacol.2024.08.543" target="_blank" rel="noopener">On identifying the non-linear dynamics of a hovercraft using an end-to-end deep learning approach</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>, N. Schmid, E. Chassaing, K. Samaha, and C. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IFAC Symposium on System Identification</span>, vol. 58, 2024, pp. 289-294
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2405.09405" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/CDC49753.2023.10383915" target="_blank" rel="noopener">PIQP: A Proximal Interior-Point Quadratic Programming Solver</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>, Y. Jiang, D. Kuhn, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">IEEE Conference on Decision and Control (CDC)</span>, 2023, pp. 1088-1093
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2304.00290" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+              <a class="inline-flex items-center gap-1.5" href="https://github.com/PREDICT-EPFL/piqp" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 576 512" aria-hidden="true" fill="currentColor">
+                  <path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                Code
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.23919/ACC55779.2023.10155901" target="_blank" rel="noopener">Physics-Informed Machine Learning for Modeling and Control of Dynamical Systems</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              T. X. Nghiem, J. Drgona, C. N. Jones, Z. Nagy, <span class="font-semibold text-ink">R. Schwan</span>, B. Dey, A. Chakrabarty, S. Di Cairano, J. A. Paulson, A. Carron, M. N. Zeilinger, W. Shaw Cortez, and D. L. Vrabie
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">American Control Conference (ACC)</span>, 2023, pp. 3735-3750
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://arxiv.org/pdf/2306.13867" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://doi.org/10.1109/ICRA46639.2022.9811938" target="_blank" rel="noopener">Optimal Thrust Vector Control of an Electric Small-Scale Rocket Prototype</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              R. Linsen, P. Listov, A. de Laiarte, <span class="font-semibold text-ink">R. Schwan</span>, and C. N. Jones
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="italic">International Conference on Robotics and Automation (ICRA)</span>, 2022, pp. 1996-2002
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://infoscience.epfl.ch/server/api/core/bitstreams/ad287a78-7931-46c9-8028-1e541a1e3a40/content" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+        </ol>
+
+        <h3 class="mt-10 text-lg font-semibold tracking-normal text-ink">Dissertations</h3>
+        <ol class="mt-4 space-y-7">
+          <li>
+            <p class="font-medium text-ink">
+              <a href="https://infoscience.epfl.ch/entities/publication/16878a1c-d1a7-4f63-984d-a487d412f3ef" target="_blank" rel="noopener">Numerical Methods for Optimization and Control: From Verification to GPU-Acceleration</a>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              PhD thesis, EPFL, 2026
+            </p>
+            <p class="mt-1 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+              <a class="inline-flex items-center gap-1.5" href="https://infoscience.epfl.ch/server/api/core/bitstreams/614b0979-4a56-4967-9515-bf1462e09e49/content" target="_blank" rel="noopener">
+                <svg class="h-4 w-4" viewBox="0 0 384 512" aria-hidden="true" fill="currentColor">
+                  <path d="M176 48L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-240-88 0c-39.8 0-72-32.2-72-72l0-88zM316.1 160L224 67.9 224 136c0 13.3 10.7 24 24 24l68.1 0zM0 64C0 28.7 28.7 0 64 0L197.5 0c17 0 33.3 6.7 45.3 18.7L365.3 141.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"/>
+                </svg>
+                Paper
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="font-medium text-ink">
+              Data-Driven Economic Model Predictive Control
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              <span class="font-semibold text-ink">R. Schwan</span>
+            </p>
+            <p class="mt-0.5 leading-7 text-slate-700">
+              MSc thesis, Imperial College London, 2020
+            </p>
+          </li>
+        </ol>
+        <p class="mt-6 text-sm text-muted">*Equal contribution</p>
+        <!-- publications:end -->
+      </section>
+
+      <section
+        id="teaching"
+        class="border-b border-slate-200 py-10"
+      >
+        <h2 class="text-2xl font-semibold tracking-normal text-ink">Teaching</h2>
+        <ul class="mt-5 space-y-4 leading-7 text-slate-700">
+          <li>
+            <span class="font-medium text-ink">Model Predictive Control</span>,
+            Teaching Assistant, Automatic Control Laboratory, EPFL.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Control Systems</span>,
+            Teaching Assistant, Automatic Control Laboratory, EPFL.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Advanced Machine Learning</span>,
+            Teaching Assistant, Learning Algorithms and Systems Laboratory, EPFL.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Computer Science I</span>,
+            Teaching Assistant, ETH Zurich.
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "tsx scripts/build-publications.ts && tailwindcss -i ./src/input.css -o ./docs/assets/site.css --minify",
+    "check": "tsc --noEmit",
+    "dev": "tailwindcss -i ./src/input.css -o ./docs/assets/site.css --watch",
+    "pubs": "tsx scripts/build-publications.ts"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.8",
+    "@types/node": "^25.9.1",
+    "tailwindcss": "^4.1.8",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.0"
+  }
+}

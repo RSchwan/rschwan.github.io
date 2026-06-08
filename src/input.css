@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #1f2933;
+  --color-muted: #64748b;
+  --color-paper: #fbfaf7;
+  --color-accent: #b2201e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+  }
+
+  a {
+    @apply text-accent underline-offset-4 hover:underline;
+  }
+}
