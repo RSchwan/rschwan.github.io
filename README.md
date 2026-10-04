@@ -16,7 +16,7 @@ Build the publications section and Tailwind stylesheet:
 npm run build
 ```
 
-Regenerate only the publications section after editing `data/publications.yml`:
+Regenerate only the publications section after editing `data/publications.bib`:
 
 ```sh
 npm run pubs

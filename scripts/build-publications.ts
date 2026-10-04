@@ -1,5 +1,4 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { parse } from "yaml";
 
 type LinkIcon = "paper" | "code";
 
@@ -32,12 +31,29 @@ type PublicationGroup = {
   items: Publication[];
 };
 
-type PublicationsData = {
-  groups: PublicationGroup[];
-  notes?: string[];
+type BibEntry = {
+  type: string;
+  key: string;
+  fields: Record<string, string>;
 };
 
-const dataPath = "data/publications.yml";
+const dataPath = "data/publications.bib";
+const myLastName = "Schwan";
+
+const groupNames: Record<string, string> = {
+  misc: "Preprints",
+  article: "Journal Papers",
+  inproceedings: "Conference Papers",
+  conference: "Conference Papers",
+  phdthesis: "Dissertations",
+  mastersthesis: "Dissertations",
+};
+
+const thesisTypes: Record<string, string> = {
+  phdthesis: "PhD thesis",
+  mastersthesis: "Master's thesis",
+};
+
 const htmlPath = "docs/index.html";
 const startMarker = "<!-- publications:start -->";
 const endMarker = "<!-- publications:end -->";
@@ -96,31 +112,322 @@ function authorsHtml(authors: Author[]): string {
   return `${names.slice(0, -1).join(", ")}, and ${names.at(-1)}`;
 }
 
-function validate(data: unknown): asserts data is PublicationsData {
-  if (!data || typeof data !== "object") {
-    throw new Error(`${dataPath} must contain an object`);
-  }
+function parseBibtex(input: string): BibEntry[] {
+  const entries: BibEntry[] = [];
+  const strings: Record<string, string> = {};
+  let pos = 0;
 
-  const publications = data as Partial<PublicationsData>;
-  if (!Array.isArray(publications.groups)) {
-    throw new Error(`${dataPath} must contain a groups array`);
-  }
+  const error = (message: string) => {
+    const line = input.slice(0, pos).split("\n").length;
+    return new Error(`${dataPath}:${line}: ${message}`);
+  };
 
-  for (const group of publications.groups) {
-    if (!group.name || !Array.isArray(group.items)) {
-      throw new Error("Each publication group needs a name and items array");
+  const skipSpace = () => {
+    while (pos < input.length && /\s/.test(input[pos])) pos++;
+  };
+
+  const expect = (char: string) => {
+    skipSpace();
+    if (input[pos] !== char) throw error(`expected "${char}"`);
+    pos++;
+  };
+
+  const readIdentifier = () => {
+    skipSpace();
+    const match = /[^\s"#%'(),={}]+/y;
+    match.lastIndex = pos;
+    const name = match.exec(input)?.[0];
+    if (!name) throw error("expected an identifier");
+    pos += name.length;
+    return name;
+  };
+
+  // Reads up to the closing delimiter at brace depth 0; pos must be just past the opening delimiter.
+  const readDelimited = (close: string) => {
+    const start = pos;
+    let depth = 0;
+    for (; pos < input.length; pos++) {
+      const char = input[pos];
+      if (char === "\\") pos++;
+      else if (char === "{") depth++;
+      else if (char === close && depth === 0) return input.slice(start, pos++);
+      else if (char === "}") depth--;
+    }
+    throw error(`missing closing "${close}"`);
+  };
+
+  const readValue = () => {
+    let value = "";
+    for (;;) {
+      skipSpace();
+      const char = input[pos];
+      if (char === "{" || char === '"') {
+        pos++;
+        value += readDelimited(char === "{" ? "}" : '"');
+      } else {
+        const name = readIdentifier();
+        const resolved = /^\d+$/.test(name) ? name : strings[name.toLowerCase()];
+        if (resolved === undefined) throw error(`undefined @string "${name}"`);
+        value += resolved;
+      }
+      skipSpace();
+      if (input[pos] !== "#") return value.replace(/\s+/g, " ").trim();
+      pos++;
+    }
+  };
+
+  while (pos < input.length) {
+    const char = input[pos];
+    if (char === "%") {
+      pos = input.indexOf("\n", pos);
+      if (pos === -1) break;
+      continue;
+    }
+    if (char !== "@") {
+      pos++;
+      continue;
     }
 
-    for (const item of group.items) {
-      if (!item.title || !Array.isArray(item.authors) || item.authors.length === 0) {
-        throw new Error(`Publication in "${group.name}" is missing a title or authors`);
+    pos++;
+    const type = readIdentifier().toLowerCase();
+    skipSpace();
+    const open = input[pos];
+    if (open !== "{" && open !== "(") throw error(`expected "{" after @${type}`);
+    pos++;
+    const close = open === "{" ? "}" : ")";
+
+    if (type === "comment" || type === "preamble") {
+      readDelimited(close);
+    } else if (type === "string") {
+      const name = readIdentifier().toLowerCase();
+      expect("=");
+      strings[name] = readValue();
+      expect(close);
+    } else {
+      const key = readIdentifier();
+      const fields: Record<string, string> = {};
+      for (;;) {
+        skipSpace();
+        if (input[pos] === ",") pos++;
+        skipSpace();
+        if (input[pos] === close) break;
+        if (pos >= input.length) throw error(`unterminated entry "${key}"`);
+        const name = readIdentifier().toLowerCase();
+        expect("=");
+        fields[name] = readValue();
+      }
+      pos++;
+      entries.push({ type, key, fields });
+    }
+  }
+
+  return entries;
+}
+
+const accents: Record<string, string> = {
+  "`": "̀",
+  "'": "́",
+  "^": "̂",
+  "~": "̃",
+  "=": "̄",
+  ".": "̇",
+  '"': "̈",
+  u: "̆",
+  v: "̌",
+  H: "̋",
+  r: "̊",
+  c: "̧",
+  k: "̨",
+  d: "̣",
+};
+
+const symbols: Record<string, string> = {
+  ss: "ß",
+  ae: "æ",
+  AE: "Æ",
+  oe: "œ",
+  OE: "Œ",
+  aa: "å",
+  AA: "Å",
+  o: "ø",
+  O: "Ø",
+  l: "ł",
+  L: "Ł",
+  i: "i",
+  j: "j",
+};
+
+function latexToText(value: string): string {
+  return value
+    .replace(/\\(ss|ae|AE|oe|OE|aa|AA|o|O|l|L|i|j)(?![A-Za-z])(?:\{\}|\s+)?/g, (_, name: string) => symbols[name])
+    .replace(
+      /\\([`'^~=."])\s*(?:\{([^{}]*)\}|([^\s{}\\]))|\\([uvHrckd])(?:\s*\{([^{}]*)\}|\s+([^\s{}\\]))/g,
+      (match, symbol?: string, braced1?: string, bare1?: string, letter?: string, braced2?: string, bare2?: string) => {
+        const base = braced1 ?? bare1 ?? braced2 ?? bare2 ?? "";
+        const accent = accents[symbol ?? letter ?? ""];
+        return base ? `${base}${accent}` : match;
+      },
+    )
+    .replace(/\\([&%$#_])/g, "$1")
+    .replace(/\\[A-Za-z]+\s*/g, "")
+    .replace(/---/g, "—")
+    .replace(/--/g, "–")
+    .replace(/~/g, " ")
+    .replace(/[{}]/g, "")
+    .normalize("NFC")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Splits on a sticky separator pattern, ignoring matches inside braces.
+function splitTopLevel(value: string, separator: RegExp): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < value.length; i++) {
+    if (value[i] === "{") depth++;
+    else if (value[i] === "}") depth--;
+    else if (depth === 0) {
+      separator.lastIndex = i;
+      const match = separator.exec(value);
+      if (match?.[0]) {
+        parts.push(value.slice(start, i));
+        i += match[0].length - 1;
+        start = i + 1;
       }
     }
   }
+  parts.push(value.slice(start));
+  return parts.map((part) => part.trim()).filter(Boolean);
 }
 
-function renderPublications(data: PublicationsData): string {
-  const groups = data.groups
+function initials(given: string): string {
+  return splitTopLevel(given, /\s+/y)
+    .map((word) =>
+      latexToText(word)
+        .split("-")
+        .map((part) => `${Array.from(part)[0] ?? ""}.`)
+        .join("-"),
+    )
+    .join(" ");
+}
+
+// Formats "Last, First" or "First von Last" as "F. von Last".
+function parseName(raw: string): { name: string; lastName: string } {
+  const parts = splitTopLevel(raw, /,/y);
+  let given = "";
+  let last: string;
+
+  if (parts.length > 1) {
+    last = parts[0];
+    given = parts.at(-1) ?? "";
+  } else {
+    const words = splitTopLevel(raw, /\s+/y);
+    let split = words.findIndex((word, index) => index > 0 && index < words.length - 1 && /^[a-z]/.test(word));
+    if (split === -1) split = words.length - 1;
+    given = words.slice(0, split).join(" ");
+    last = words.slice(split).join(" ");
+  }
+
+  const lastName = latexToText(last);
+  return { name: given ? `${initials(given)} ${lastName}` : lastName, lastName };
+}
+
+function joinDetails(parts: (string | undefined)[]): string | undefined {
+  return parts.filter(Boolean).join(", ") || undefined;
+}
+
+function toPublication(entry: BibEntry): Publication {
+  const raw = entry.fields;
+  const text = (name: string) => (raw[name] ? latexToText(raw[name]) : undefined);
+  const title = text("title");
+
+  if (!title || !raw.author) {
+    throw new Error(`${dataPath}: entry "${entry.key}" is missing a title or author`);
+  }
+
+  const equal = (text("equal") ?? "").split(",").map((name) => name.trim()).filter(Boolean);
+  const authors = splitTopLevel(raw.author, /\s+and\s+/iy).map((author): Author => {
+    const { name, lastName } = parseName(author);
+    return {
+      name,
+      me: lastName === myLastName || undefined,
+      equalContribution: equal.includes(lastName) || undefined,
+    };
+  });
+
+  for (const name of equal) {
+    if (!authors.some((author) => author.name.endsWith(` ${name}`) || author.name === name)) {
+      throw new Error(`${dataPath}: entry "${entry.key}" lists "${name}" in equal, but no author has that last name`);
+    }
+  }
+
+  const year = text("year");
+  const pages = raw.pages?.replace(/\s*-+\s*/g, "-");
+  const volume = raw.volume && `vol. ${raw.volume}`;
+  const number = raw.number && `no. ${raw.number}`;
+  const pp = pages && `pp. ${pages}`;
+
+  let venueName: string | undefined;
+  let details: string | undefined;
+  let venueText: string | undefined;
+
+  switch (entry.type) {
+    case "article":
+      venueName = text("journal");
+      details = joinDetails([volume, number, pp, year]);
+      break;
+    case "inproceedings":
+    case "conference":
+      venueName = text("booktitle");
+      details = joinDetails([volume, year, pp]);
+      break;
+    case "misc":
+      venueText = joinDetails([text("howpublished") ?? "Preprint", year]);
+      break;
+    case "phdthesis":
+    case "mastersthesis":
+      venueText = joinDetails([text("type") ?? thesisTypes[entry.type], text("school"), year]);
+      break;
+    default:
+      venueName = text("journal") ?? text("booktitle") ?? text("publisher");
+      details = year;
+  }
+
+  const doi = raw.doi?.replace(/^https?:\/\/(dx\.)?doi\.org\//, "");
+  const doiUrl = doi && `https://doi.org/${doi}`;
+  const paperUrl = raw.pdf ?? doiUrl;
+  const links: PublicationLink[] = [];
+  if (paperUrl) links.push({ label: "Paper", icon: "paper", url: paperUrl });
+  if (raw.code) links.push({ label: "Code", icon: "code", url: raw.code });
+
+  return {
+    title,
+    titleUrl: doiUrl ?? raw.url,
+    authors,
+    venue: venueName ? { name: venueName, details } : undefined,
+    venueText: venueName ? undefined : (venueText ?? details),
+    links,
+  };
+}
+
+function groupPublications(entries: BibEntry[]): PublicationGroup[] {
+  const groups = new Map<string, Publication[]>();
+
+  for (const entry of entries) {
+    const name = entry.fields.group ? latexToText(entry.fields.group) : groupNames[entry.type];
+    if (!name) {
+      throw new Error(`${dataPath}: entry "${entry.key}" has type @${entry.type}; add a group field to place it`);
+    }
+    if (!groups.has(name)) groups.set(name, []);
+    groups.get(name)?.push(toPublication(entry));
+  }
+
+  return Array.from(groups, ([name, items]) => ({ name, items }));
+}
+
+function renderPublications(publicationGroups: PublicationGroup[]): string {
+  return publicationGroups
     .map((group, groupIndex) => {
       const groupMargin = groupIndex === 0 ? "mt-6" : "mt-10";
       const lines = [
@@ -179,12 +486,6 @@ function renderPublications(data: PublicationsData): string {
       return lines.join("\n");
     })
     .join("\n\n");
-
-  const notes = data.notes?.length
-    ? `        <p class="mt-6 text-sm text-muted">${data.notes.map(escapeHtml).join("<br />")}</p>`
-    : "";
-
-  return [groups, notes].filter(Boolean).join("\n");
 }
 
 function escapedRegExp(value: string): string {
@@ -192,8 +493,7 @@ function escapedRegExp(value: string): string {
 }
 
 async function main() {
-  const data = parse(await readFile(dataPath, "utf8"));
-  validate(data);
+  const groups = groupPublications(parseBibtex(await readFile(dataPath, "utf8")));
 
   const html = await readFile(htmlPath, "utf8");
   const markerPattern = new RegExp(
@@ -204,7 +504,7 @@ async function main() {
     throw new Error(`Missing ${startMarker} / ${endMarker} markers in ${htmlPath}`);
   }
 
-  const generated = renderPublications(data);
+  const generated = renderPublications(groups);
   await writeFile(htmlPath, html.replace(markerPattern, `$1\n${generated}\n        $2`));
 }
 
