@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cv.pdf
+
+Sitemap: https://rschwan.github.io/sitemap.xml
